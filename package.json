@@ -1,0 +1,24 @@
+{
+  "name": "cse-motors",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.21.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikecarter216/cse340https---github.com-mikecarter216-cse340.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mikecarter216/cse340https---github.com-mikecarter216-cse340/issues"
+  },
+  "homepage": "https://github.com/mikecarter216/cse340https---github.com-mikecarter216-cse340#readme",
+  "description": ""
+}
