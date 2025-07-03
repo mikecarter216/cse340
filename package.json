@@ -1,9 +1,9 @@
 {
   "name": "cse-motors",
   "version": "1.0.0",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node server.js"
   },
   "dependencies": {
     "ejs": "^3.1.9",
@@ -12,14 +12,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mikecarter216/cse340https---github.com-mikecarter216-cse340.git"
+    "url": "https://github.com/mikecarter216/cse340.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mikecarter216/cse340https---github.com-mikecarter216-cse340/issues"
+    "url": "https://github.com/mikecarter216/cse340/issues"
   },
-  "homepage": "https://github.com/mikecarter216/cse340https---github.com-mikecarter216-cse340#readme",
-  "description": ""
+  "homepage": "https://github.com/mikecarter216/cse340#readme",
+  "author": "Michael Akpan",
+  "description": "CSE Motors website for CSE340 using Node.js, Express, and EJS",
+  "license": "ISC"
 }
