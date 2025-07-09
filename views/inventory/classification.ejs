@@ -1,0 +1,23 @@
+<%- include('../partials/header', { title }) %>
+<%- include('../partials/navigation', { nav }) %>
+
+<main>
+  <h1><%= title %></h1>
+
+  <% if (vehicles && vehicles.length > 0) { %>
+    <div class="card-grid">
+      <% vehicles.forEach(vehicle => { %>
+        <div class="card">
+          <img src="<%= vehicle.inv_image %>" alt="<%= vehicle.inv_make %> <%= vehicle.inv_model %>">
+          <h2><%= vehicle.inv_year %> <%= vehicle.inv_make %> <%= vehicle.inv_model %></h2>
+          <p><strong>Price:</strong> $<%= vehicle.inv_price.toLocaleString() %></p>
+          <p><a href="/inv/detail/<%= vehicle.inv_id %>">View Details</a></p>
+        </div>
+      <% }) %>
+    </div>
+  <% } else { %>
+    <p>No vehicles found for this category.</p>
+  <% } %>
+</main>
+
+<%- include('../partials/footer') %>
