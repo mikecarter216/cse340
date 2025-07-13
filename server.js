@@ -1,10 +1,23 @@
 const express = require("express")
 const path = require("path")
 require("dotenv").config()
+const mongoose = require("mongoose")
 
 const app = express()
 const PORT = process.env.PORT || 3000
 
+// Connect to MongoDB
+mongoose.connect(process.env.DATABASE_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => console.log("✅ MongoDB connected successfully"))
+.catch((err) => {
+  console.error("❌ MongoDB connection error:", err)
+  process.exit(1)
+})
+
+// Routes and Middleware
 const invRoute = require("./routes/inventoryRoute")
 const errorRoute = require("./routes/errorRoute")
 const handleErrors = require("./utilities/errorHandler")
@@ -24,6 +37,16 @@ app.get("/", (req, res) => {
 })
 
 app.use(handleErrors)
+
+const mongoose = require("mongoose")
+require("dotenv").config()
+
+mongoose.connect(process.env.DATABASE_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+.then(() => console.log("MongoDB connected"))
+.catch((err) => console.error("MongoDB connection error:", err))
 
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`)
