@@ -1,7 +1,7 @@
 const express = require("express")
 const path = require("path")
-require("dotenv").config()
 const mongoose = require("mongoose")
+require("dotenv").config()
 
 const app = express()
 const PORT = process.env.PORT || 3000
@@ -22,10 +22,12 @@ const invRoute = require("./routes/inventoryRoute")
 const errorRoute = require("./routes/errorRoute")
 const handleErrors = require("./utilities/errorHandler")
 
+// Static files and views
 app.use(express.static(path.join(__dirname, "public")))
 app.set("view engine", "ejs")
 app.set("views", path.join(__dirname, "views"))
 
+// Routes
 app.use("/inv", invRoute)
 app.use("/", errorRoute)
 
@@ -36,18 +38,10 @@ app.get("/", (req, res) => {
   })
 })
 
+// Error handling middleware
 app.use(handleErrors)
 
-const mongoose = require("mongoose")
-require("dotenv").config()
-
-mongoose.connect(process.env.DATABASE_URL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
-.then(() => console.log("MongoDB connected"))
-.catch((err) => console.error("MongoDB connection error:", err))
-
+// Start server
 app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`)
+  console.log(`🚗 Server running at http://localhost:${PORT}`)
 })
