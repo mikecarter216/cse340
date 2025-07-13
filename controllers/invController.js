@@ -4,17 +4,20 @@ const utilities = require("../utilities/index")
 async function buildByClassification(req, res, next) {
   try {
     const classification = req.params.classification
-    const vehicles = await invModel.getVehiclesByClassification(classification)
+    const data = await invModel.getVehiclesByClassification(classification)
     const nav = await utilities.getNav()
-
-    res.render("inventory/classification", {
-      title: `${classification.toUpperCase()} Vehicles`,
+    res.render("inventory", {
+      title: classification.toUpperCase(),
       nav,
-      vehicles
+      vehicles: data
     })
   } catch (err) {
     next(err)
   }
+}
+
+module.exports = {
+  buildByClassification
 }
 
 module.exports = { buildByClassification }

@@ -20,7 +20,6 @@ mongoose.connect(process.env.DATABASE_URL, {
 // Routes and Middleware
 const invRoute = require("./routes/inventoryRoute")
 const errorRoute = require("./routes/errorRoute")
-const handleErrors = require("./utilities/errorHandler")
 
 // Static files and views
 app.use(express.static(path.join(__dirname, "public")))
@@ -38,7 +37,7 @@ app.get("/", (req, res) => {
   })
 })
 
-// Error handling middleware
+const handleErrors = require("./utilities/errorHandler")
 app.use(handleErrors)
 
 // Start server
