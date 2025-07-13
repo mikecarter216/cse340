@@ -7,7 +7,7 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #dff6f9; /* Soft background like the screenshot */
+  background-color: #dff6f9;
 }
 
 /* ===== TOP HEADER ===== */
@@ -65,15 +65,17 @@ main {
   gap: 2rem;
   margin-top: 1rem;
   background-color: #fff;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
 .vehicle-image img {
   max-width: 100%;
   height: auto;
-  border-radius: 8px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  object-fit: cover;
 }
 
 .vehicle-info {
@@ -82,23 +84,42 @@ main {
 
 .vehicle-info h1 {
   margin-bottom: 1rem;
-  font-size: 1.8rem;
-  color: #333;
+  font-size: 2rem;
+  color: #222;
 }
 
 .vehicle-info p {
   margin: 0.5rem 0;
   font-size: 1rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+.vehicle-info .price {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #28a745;
+  margin: 1rem 0;
 }
 
 /* ===== BUTTON STYLES ===== */
-.vehicle-actions a {
-  display: inline-block;
-  margin: 0.25rem;
-  padding: 0.5rem 1rem;
+.vehicle-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.vehicle-actions a,
+.vehicle-actions button {
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
   text-decoration: none;
-  border-radius: 4px;
+  border-radius: 6px;
   font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .btn.primary {
@@ -106,9 +127,17 @@ main {
   color: white;
 }
 
+.btn.primary:hover {
+  background-color: #0056b3;
+}
+
 .btn.secondary {
-  background-color: #f0f0f0;
-  color: #333;
+  background-color: #e2e6ea;
+  color: #212529;
+}
+
+.btn.secondary:hover {
+  background-color: #d6d8db;
 }
 
 /* ===== VEHICLE GRID VIEW (classification) ===== */
@@ -166,10 +195,12 @@ footer a:hover {
 @media (min-width: 768px) {
   .detail-wrapper {
     flex-direction: row;
+    align-items: flex-start;
   }
 
   .vehicle-image {
     flex: 1;
+    margin-right: 2rem;
   }
 
   .vehicle-info {

@@ -1,25 +1,4 @@
-const mongoose = require("mongoose")
-require("dotenv").config()
-
-// Define vehicle schema
-const vehicleSchema = new mongoose.Schema({
-  inv_id: Number,
-  inv_make: String,
-  inv_model: String,
-  inv_year: Number,
-  inv_price: Number,
-  inv_miles: Number,
-  inv_color: String,
-  inv_description: String,
-  inv_image: String,
-  classification: String
-})
-
-// Create the model
-const Vehicle = mongoose.model("Vehicle", vehicleSchema)
-
-// Seed data
-const seedData = [
+const inventory = [
   {
     inv_id: 1,
     inv_make: "Lamborghini",
@@ -44,20 +23,32 @@ const seedData = [
     inv_image: "/images/suv1.png",
     classification: "suv"
   },
-  {
-    inv_id: 3,
-    inv_make: "Ford",
-    inv_model: "Explorer",
-    inv_year: 2019,
-    inv_price: 21000,
-    inv_miles: 20000,
-    inv_color: "Blue",
-    inv_description: "Durable and powerful car.",
-    inv_image: "/images/ford1.png",
+      {
+    inv_id: 4,
+    inv_make: "cybertruck",
+    inv_model: "G300",
+    inv_year: 2025,
+    inv_price: 4000,
+    inv_miles: 3000,
+    inv_color: "milk white",
+    inv_description: "Smart Car.",
+    inv_image: "/images/tesla1.png",
     classification: "suv"
   },
-  {
+      {
     inv_id: 4,
+    inv_make: "Toyota",
+    inv_model: "300",
+    inv_year: 2023,
+    inv_price: 4000,
+    inv_miles: 3000,
+    inv_color: "black",
+    inv_description: "Durable car.",
+    inv_image: "/images/camry1.png",
+    classification: "sedan"
+  },
+  {
+    inv_id: 3,
     inv_make: "Honda",
     inv_model: "Accord",
     inv_year: 2021,
@@ -68,8 +59,20 @@ const seedData = [
     inv_image: "/images/sedan1.png",
     classification: "sedan"
   },
+      {
+    inv_id: 4,
+    inv_make: "Toyota",
+    inv_model: "G30",
+    inv_year: 2023,
+    inv_price: 4000,
+    inv_miles: 2000,
+    inv_color: "deep blue",
+    inv_description: "Comfortable and cool.",
+    inv_image: "/images/camry2.png",
+    classification: "sedan"
+  },
   {
-    inv_id: 5,
+    inv_id: 4,
     inv_make: "Ford",
     inv_model: "F-150",
     inv_year: 2020,
@@ -80,68 +83,33 @@ const seedData = [
     inv_image: "/images/truck1.png",
     classification: "truck"
   },
-  {
-    inv_id: 6,
-    inv_make: "Mark",
-    inv_model: "R-23-X",
-    inv_year: 2021,
-    inv_price: 45000,
-    inv_miles: 20000,
-    inv_color: "Red",
-    inv_description: "Durable and powerful truck.",
-    inv_image: "/images/truck3.png",
-    classification: "truck"
-  },
-  {
-    inv_id: 7,
-    inv_make: "Tesla",
-    inv_model: "Current",
-    inv_year: 2024,
-    inv_price: 250000,
-    inv_miles: 25000,
-    inv_color: "ash grey",
-    inv_description: "Durable and powerful Truck.",
-    inv_image: "/images/tesla1.png",
-    classification: "sedan"
-  },
-  {
-    inv_id: 8,
-    inv_make: "Tesla",
-    inv_model: "G50",
-    inv_year: 2022,
-    inv_price: 50000,
-    inv_miles: 20000,
-    inv_color: "Deep Blue",
-    inv_description: "Durable and powerful Car.",
-    inv_image: "/images/tesla2.png",
-    classification: "sedan"
-  },
-  {
-    inv_id: 9,
-    inv_make: "Tesla",
-    inv_model: "Mustang",
+    {
+    inv_id: 4,
+    inv_make: "truck",
+    inv_model: "G300",
     inv_year: 2023,
-    inv_price: 25000,
-    inv_miles: 10000,
-    inv_color: "White",
-    inv_description: "Durable and powerful Car.",
-    inv_image: "/images/tesla3.png",
-    classification: "suv"
-  },
-  {
-    inv_id: 10,
-    inv_make: "Ford",
-    inv_model: "C-120",
-    inv_year: 2022,
-    inv_price: 42000,
-    inv_miles: 30020,
-    inv_color: "light green",
+    inv_price: 4000,
+    inv_miles: 3000,
+    inv_color: "white",
     inv_description: "Durable and powerful truck.",
     inv_image: "/images/truck2.png",
     classification: "truck"
   },
+      {
+    inv_id: 4,
+    inv_make: "Mark",
+    inv_model: "G3",
+    inv_year: 2023,
+    inv_price: 5000,
+    inv_miles: 25000,
+    inv_color: "red",
+    inv_description: "Durable and powerful truck.",
+    inv_image: "/images/truck3.png",
+    classification: "truck"
+  },
+  // Custom cars (up to 5 total)
   {
-    inv_id: 11,
+    inv_id: 5,
     inv_make: "G-Wagon",
     inv_model: "G-Class",
     inv_year: 2019,
@@ -153,7 +121,7 @@ const seedData = [
     classification: "custom"
   },
   {
-    inv_id: 12,
+    inv_id: 6,
     inv_make: "Toyota",
     inv_model: "Model S",
     inv_year: 2023,
@@ -165,7 +133,7 @@ const seedData = [
     classification: "custom"
   },
   {
-    inv_id: 13,
+    inv_id: 7,
     inv_make: "Nissan",
     inv_model: "370Z",
     inv_year: 2020,
@@ -177,7 +145,7 @@ const seedData = [
     classification: "custom"
   },
   {
-    inv_id: 14,
+    inv_id: 8,
     inv_make: "Mercedes-Benz",
     inv_model: "C 500",
     inv_year: 2022,
@@ -188,9 +156,10 @@ const seedData = [
     inv_image: "/images/benz1.png",
     classification: "custom"
   },
+  // Sport cars (2 total)
   {
-    inv_id: 15,
-    inv_make: "BMW",
+    inv_id: 9,
+    inv_make: "bmw",
     inv_model: "911",
     inv_year: 2023,
     inv_price: 115000,
@@ -201,7 +170,7 @@ const seedData = [
     classification: "sport"
   },
   {
-    inv_id: 16,
+    inv_id: 10,
     inv_make: "Ferrari",
     inv_model: "Roma",
     inv_year: 2023,
@@ -214,19 +183,18 @@ const seedData = [
   }
 ]
 
-// Connect and seed
-mongoose.connect(process.env.DATABASE_URL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
-.then(async () => {
-  console.log("✅ Connected to MongoDB")
-  await Vehicle.deleteMany({})
-  await Vehicle.insertMany(seedData)
-  console.log("✅ Vehicle data seeded successfully!")
-  process.exit()
-})
-.catch((err) => {
-  console.error("❌ Seeding failed:", err)
-  process.exit(1)
-})
+async function getVehicleById(inv_id) {
+  return inventory.find(v => v.inv_id == inv_id)
+}
+
+async function getVehiclesByClassification(classification) {
+  let results = inventory.filter(v => v.classification === classification)
+  
+  // Limit based on classification
+  if (classification === "custom") return results.slice(0, 5)
+  if (classification === "sport") return results.slice(0, 2)
+
+  return results
+}
+
+module.exports = { getVehicleById, getVehiclesByClassification }

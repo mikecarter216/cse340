@@ -1,12 +1,9 @@
-const express = require("express")
-const router = express.Router()
+const express = require("express");
+const router = express.Router();
 
+// Footer test error route
 router.get("/trigger-error", (req, res, next) => {
-  try {
-    throw new Error("Intentional test error from footer")
-  } catch (err) {
-    next(err)
-  }
-})
+  next(new Error("Intentional test error from footer"));
+});
 
-module.exports = router
+module.exports = router;

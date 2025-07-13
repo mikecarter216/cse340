@@ -1,85 +1,22 @@
-/* Base Reset */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  background-color: #3e0c0c; /* Deep maroon background */
-  color: #fff;
-}
-
-/* ====== HEADER ====== */
-.top-header {
-  background-color: #1c1c1c;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-}
-
-.top-header .branding {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.top-header .account-link a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.top-header .account-link a:hover {
-  text-decoration: underline;
-}
-
-/* ====== NAVIGATION ====== */
-nav.main-nav {
-  background-color: #222;
-  padding: 0.75rem 1rem;
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-}
-
-nav.main-nav a {
-  color: white;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  font-weight: bold;
-  border-radius: 4px;
-  transition: background-color 0.3s;
-}
-
-nav.main-nav a:hover {
-  background-color: #444;
-}
-
-/* ====== MAIN CONTENT ====== */
-main {
-  padding: 2rem;
-}
-
-/* ====== VEHICLE DETAIL VIEW ====== */
+/* ====== VEHICLE DETAIL VIEW (ENHANCED) ====== */
 .detail-wrapper {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  margin-top: 1rem;
+  margin-top: 2rem;
   background-color: #fff;
   color: #000;
-  padding: 1.5rem;
-  border-radius: 8px;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .vehicle-image img {
   max-width: 100%;
   height: auto;
   border-radius: 8px;
+  border: 1px solid #ccc;
+  object-fit: cover;
 }
 
 .vehicle-info {
@@ -87,100 +24,73 @@ main {
 }
 
 .vehicle-info h1 {
+  font-size: 2rem;
+  color: #333;
   margin-bottom: 1rem;
-  font-size: 1.8rem;
 }
 
 .vehicle-info p {
-  margin: 0.5rem 0;
   font-size: 1rem;
-}
-
-/* ====== BUTTON STYLES ====== */
-.vehicle-actions a {
-  display: inline-block;
-  margin: 0.25rem;
-  padding: 0.5rem 1rem;
-  text-decoration: none;
-  border-radius: 4px;
-  font-weight: bold;
-}
-
-.btn.primary {
-  background-color: #007bff;
-  color: white;
-}
-
-.btn.secondary {
-  background-color: #f0f0f0;
-  color: #333;
-}
-
-/* ====== VEHICLE GRID VIEW ====== */
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.card {
-  background-color: #fff;
-  border-radius: 8px;
-  overflow: hidden;
-  text-align: center;
-  padding: 1rem;
-  color: #000;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease-in-out;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.card img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 6px;
-  margin-bottom: 0.75rem;
-}
-
-.card h2 {
   margin: 0.5rem 0;
-  font-size: 1.2rem;
+  color: #444;
+  line-height: 1.6;
 }
 
-.card p {
-  font-size: 0.95rem;
+.vehicle-info .price {
+  font-size: 1.75rem;
+  color: #1c7430;
+  font-weight: bold;
+  margin-top: 1rem;
 }
 
-/* ====== FOOTER ====== */
-footer {
-  text-align: center;
-  padding: 1rem;
-  background-color: #222;
-  color: #fff;
+/* ====== BUTTON STYLES FOR DETAIL PAGE ====== */
+.vehicle-actions {
   margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
-footer a {
-  color: #ddd;
-  text-decoration: underline;
+.vehicle-actions a,
+.vehicle-actions button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-footer a:hover {
-  color: white;
+.vehicle-actions .btn.primary {
+  background-color: #28a745;
+  color: #fff;
 }
 
-/* ====== RESPONSIVE VEHICLE DETAILS ====== */
+.vehicle-actions .btn.primary:hover {
+  background-color: #218838;
+}
+
+.vehicle-actions .btn.secondary {
+  background-color: #e2e6ea;
+  color: #212529;
+}
+
+.vehicle-actions .btn.secondary:hover {
+  background-color: #d6d8db;
+}
+
+/* ====== Responsive Flex Layout ====== */
 @media (min-width: 768px) {
   .detail-wrapper {
     flex-direction: row;
+    align-items: flex-start;
   }
 
   .vehicle-image {
     flex: 1;
+    margin-right: 2rem;
   }
 
   .vehicle-info {

@@ -1,0 +1,11 @@
+<%- include('../partials/header', { title }) %>
+<%- include('../partials/navigation', { nav }) %>
+
+<main style="padding: 2rem;">
+  <h1 style="color: red;">Server Error</h1>
+  <p>Oh no! There was a crash.</p>
+  <p><strong>Error:</strong> <%= message %></p>
+  <p>Try going back to the <a href="/">home page</a> or another route.</p>
+</main>
+
+<%- include('../partials/footer') %>

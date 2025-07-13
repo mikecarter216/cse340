@@ -9,7 +9,7 @@ const vehicleSchema = new mongoose.Schema({
   inv_color: String,
   inv_description: String,
   inv_image: String,
-  classification: String
+  classification_name: String
 })
 
 module.exports = mongoose.model("Vehicle", vehicleSchema)

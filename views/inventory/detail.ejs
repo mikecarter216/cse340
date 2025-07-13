@@ -1,17 +1,26 @@
-<%- include("../partials/header", { title }) %>
-<%- include("../partials/navigation", { nav }) %>
-<main class="detail-container">
-  <div class="detail-wrapper">
-    <div class="vehicle-image">
-      <img src="<%= vehicle.inv_image %>" alt="<%= vehicle.inv_make %> <%= vehicle.inv_model %>">
-    </div>
-    <div class="vehicle-info">
-      <h1><%= vehicle.inv_year %> <%= vehicle.inv_make %> <%= vehicle.inv_model %></h1>
-      <p><strong>Price:</strong> $<%= vehicle.inv_price.toLocaleString() %></p>
-      <p><strong>Mileage:</strong> <%= vehicle.inv_miles.toLocaleString() %> miles</p>
-      <p><strong>Color:</strong> <%= vehicle.inv_color %></p>
-      <p><strong>Description:</strong> <%= vehicle.inv_description %></p>
+<%- include('../partials/header', { title }) %>
+<%- include('../partials/navigation', { nav }) %>
+
+<main class="detail-wrapper">
+  <div class="vehicle-image">
+    <img src="<%= vehicle.inv_image %>" alt="<%= vehicle.inv_make %> <%= vehicle.inv_model %>">
+  </div>
+
+  <div class="vehicle-info">
+    <h1><%= vehicle.inv_year %> <%= vehicle.inv_make %> <%= vehicle.inv_model %></h1>
+
+    <p class="price">$<%= vehicle.inv_price.toLocaleString() %></p>
+    <p><strong>Mileage:</strong> <%= vehicle.inv_miles.toLocaleString() %> miles</p>
+    <p><strong>Color:</strong> <%= vehicle.inv_color %></p>
+    <p><strong>Description:</strong> <%= vehicle.inv_description %></p>
+
+    <div class="vehicle-actions">
+      <a href="#" class="btn primary">Start My Purchase</a>
+      <a href="#" class="btn secondary">Contact Us</a>
+      <a href="#" class="btn secondary">Schedule Test Drive</a>
+      <a href="#" class="btn secondary">Apply for Financing</a>
     </div>
   </div>
 </main>
-<%- include("../partials/footer") %>
+
+<%- include('../partials/footer') %>
