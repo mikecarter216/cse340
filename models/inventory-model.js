@@ -24,7 +24,7 @@ const inventory = [
     classification: "suv"
   },
       {
-    inv_id: 4,
+    inv_id: 3,
     inv_make: "cybertruck",
     inv_model: "G300",
     inv_year: 2025,
@@ -48,7 +48,7 @@ const inventory = [
     classification: "sedan"
   },
   {
-    inv_id: 3,
+    inv_id: 5,
     inv_make: "Honda",
     inv_model: "Accord",
     inv_year: 2021,
@@ -60,7 +60,7 @@ const inventory = [
     classification: "sedan"
   },
       {
-    inv_id: 4,
+    inv_id: 6,
     inv_make: "Toyota",
     inv_model: "G30",
     inv_year: 2023,
@@ -72,7 +72,7 @@ const inventory = [
     classification: "sedan"
   },
   {
-    inv_id: 4,
+    inv_id: 7,
     inv_make: "Ford",
     inv_model: "F-150",
     inv_year: 2020,
@@ -84,7 +84,7 @@ const inventory = [
     classification: "truck"
   },
     {
-    inv_id: 4,
+    inv_id: 8,
     inv_make: "truck",
     inv_model: "G300",
     inv_year: 2023,
@@ -96,7 +96,7 @@ const inventory = [
     classification: "truck"
   },
       {
-    inv_id: 4,
+    inv_id: 9,
     inv_make: "Mark",
     inv_model: "G3",
     inv_year: 2023,
@@ -107,9 +107,9 @@ const inventory = [
     inv_image: "/images/truck3.png",
     classification: "truck"
   },
-  // Custom cars (up to 5 total)
+
   {
-    inv_id: 5,
+    inv_id: 10,
     inv_make: "G-Wagon",
     inv_model: "G-Class",
     inv_year: 2019,
@@ -121,7 +121,7 @@ const inventory = [
     classification: "custom"
   },
   {
-    inv_id: 6,
+    inv_id: 11,
     inv_make: "Toyota",
     inv_model: "Model S",
     inv_year: 2023,
@@ -133,7 +133,7 @@ const inventory = [
     classification: "custom"
   },
   {
-    inv_id: 7,
+    inv_id: 12,
     inv_make: "Nissan",
     inv_model: "370Z",
     inv_year: 2020,
@@ -145,7 +145,7 @@ const inventory = [
     classification: "custom"
   },
   {
-    inv_id: 8,
+    inv_id: 14,
     inv_make: "Mercedes-Benz",
     inv_model: "C 500",
     inv_year: 2022,
@@ -158,7 +158,7 @@ const inventory = [
   },
   // Sport cars (2 total)
   {
-    inv_id: 9,
+    inv_id: 15,
     inv_make: "bmw",
     inv_model: "911",
     inv_year: 2023,
@@ -170,7 +170,7 @@ const inventory = [
     classification: "sport"
   },
   {
-    inv_id: 10,
+    inv_id: 16,
     inv_make: "Ferrari",
     inv_model: "Roma",
     inv_year: 2023,
