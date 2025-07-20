@@ -1,35 +1,53 @@
+require("dotenv").config()
 const express = require("express")
 const path = require("path")
-const mongoose = require("mongoose")
-require("dotenv").config()
+const jwt = require("jsonwebtoken")
+const cookieParser = require("cookie-parser")
+const { connectDB } = require("./config/db") // PostgreSQL
 
 const app = express()
 const PORT = process.env.PORT || 3000
 
-// Connect to MongoDB
-mongoose.connect(process.env.DATABASE_URL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
-.then(() => console.log("✅ MongoDB connected successfully"))
-.catch((err) => {
-  console.error("❌ MongoDB connection error:", err)
-  process.exit(1)
-})
+// Connect to PostgreSQL
+connectDB()
 
-// Routes and Middleware
-const invRoute = require("./routes/inventoryRoute")
-const errorRoute = require("./routes/errorRoute")
-
-// Static files and views
+// Middleware
 app.use(express.static(path.join(__dirname, "public")))
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json())
+app.use(cookieParser())
+
+// View Engine
 app.set("view engine", "ejs")
 app.set("views", path.join(__dirname, "views"))
 
+// JWT Middleware
+app.use((req, res, next) => {
+  const token = req.cookies.jwt
+  if (token) {
+    try {
+      const decoded = jwt.verify(token, process.env.JWT_SECRET)
+      res.locals.loggedin = true
+      res.locals.accountData = decoded
+    } catch (err) {
+      res.locals.loggedin = false
+    }
+  } else {
+    res.locals.loggedin = false
+  }
+  next()
+})
+
 // Routes
+const invRoute = require("./routes/inventoryRoute")
+const accountRoute = require("./routes/accountRoute")
+const errorRoute = require("./routes/errorRoute")
+
 app.use("/inv", invRoute)
+app.use("/account", accountRoute)
 app.use("/", errorRoute)
 
+// Home Route
 app.get("/", (req, res) => {
   res.render("index", {
     title: "CSE Motors",
@@ -37,6 +55,7 @@ app.get("/", (req, res) => {
   })
 })
 
+// Error handler
 const handleErrors = require("./utilities/errorHandler")
 app.use(handleErrors)
 

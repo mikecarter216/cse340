@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <%- include("../partials/header") %>
+
+  <main>
+    <h1>Add Inventory</h1>
+
+    <% if (message) { %>
+      <p class="message"><%= message %></p>
+    <% } %>
+
+    <form action="/inv/add" method="post">
+      <label for="classification">Classification:</label>
+      <select name="classification_id" id="classification" required>
+        <option value="">Choose one</option>
+        <% classificationList.forEach(item => { %>
+          <option value="<%= item.classification_id %>"><%= item.classification_name %></option>
+        <% }) %>
+      </select>
+
+      <label for="make">Make:</label>
+      <input type="text" name="inv_make" id="make" required>
+
+      <label for="model">Model:</label>
+      <input type="text" name="inv_model" id="model" required>
+
+      <label for="year">Year:</label>
+      <input type="number" name="inv_year" id="year" required>
+
+      <label for="price">Price:</label>
+      <input type="number" name="inv_price" id="price" required>
+
+      <label for="description">Description:</label>
+      <textarea name="inv_description" id="description" required></textarea>
+
+      <label for="miles">Miles:</label>
+      <input type="number" name="inv_miles" id="miles" required>
+
+      <label for="color">Color:</label>
+      <input type="text" name="inv_color" id="color" required>
+
+      <button type="submit">Add Vehicle</button>
+    </form>
+  </main>
+
+  <%- include("../partials/footer") %>
+</body>
+</html>
