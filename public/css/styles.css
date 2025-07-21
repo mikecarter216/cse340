@@ -1,13 +1,13 @@
 /* Base Reset */
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  margin: 3px;
+  padding: 5px;
 }
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #dff6f9;
+  background-color: #e370a0;
 }
 
 /* ===== TOP HEADER ===== */
@@ -16,7 +16,7 @@ body {
   justify-content: space-between;
   align-items: center;
   background-color: #e5f9ff;
-  padding: 1rem 2rem;
+  padding: -0rem 3rem;
 }
 
 .top-header .branding {
@@ -62,8 +62,8 @@ main {
 .detail-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  margin-top: 1rem;
+  gap: 1rem;
+  margin-top: 5rem;
   background-color: #fff;
   padding: 2rem;
   border-radius: 10px;
@@ -73,9 +73,9 @@ main {
 .vehicle-image img {
   max-width: 100%;
   height: auto;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  object-fit: cover;
+  border-radius: 20px;
+  border: 10px solid #ec6565;
+  object-fit: center;
 }
 
 .vehicle-info {
@@ -117,9 +117,9 @@ main {
   text-decoration: none;
   border-radius: 6px;
   font-weight: bold;
-  border: none;
+  border: 2px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.5s ease;
 }
 
 .btn.primary {
@@ -149,19 +149,19 @@ main {
 }
 
 .card {
-  background-color: #fff;
-  border: 1px solid #ccc;
+  background-color: #f74646;
+  border: 1px solid #3b96a8;
   border-radius: 8px;
   padding: 1rem;
   text-align: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 5px rgba(82, 39, 180, 0.05);
 }
 
 .card img {
   max-width: 100%;
   height: auto;
-  border-radius: 6px;
-  margin-bottom: 0.5rem;
+  border-radius: 20px;
+  margin-bottom: -1rem;
 }
 
 .card h2 {
@@ -176,14 +176,14 @@ main {
 /* ===== FOOTER ===== */
 footer {
   text-align: center;
-  padding: 1.5rem;
+  padding: 0.5rem;
   background-color: #333;
-  color: #fff;
-  margin-top: 2rem;
+  color: #fdfafa;
+  margin-top: 1rem;
 }
 
 footer a {
-  color: #ddd;
+  color: #c0bffa;
   text-decoration: underline;
 }
 
@@ -194,12 +194,12 @@ footer a:hover {
 /* ===== RESPONSIVE LAYOUT FOR DETAIL VIEW ===== */
 @media (min-width: 768px) {
   .detail-wrapper {
-    flex-direction: row;
+    flex-direction: flex;
     align-items: flex-start;
   }
 
   .vehicle-image {
-    flex: 1;
+    flex: 6;
     margin-right: 2rem;
   }
 
