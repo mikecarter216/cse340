@@ -1,13 +1,15 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
+const path = require("path");
+const fs = require("fs");
 
-// Hardcoded user credentials (since DB is down)
 let hardcodedUser = {
   email: "michaelakpan216@gmail.com",
   password: "mike1",
   firstname: "Michael",
   lastname: "Akpan",
-  account_id: 123
+  account_id: 123,
+  avatar: null // Avatar image filename
 };
 
 // GET: Login page
@@ -24,27 +26,23 @@ const handleLogin = async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    if (email !== hardcodedUser.email) {
+    if (email !== hardcodedUser.email || password !== hardcodedUser.password) {
       return res.render("account/login", {
         title: "Login",
         errors: null,
-        message: "No account found with that email."
+        message: "Invalid credentials."
       });
     }
 
-    if (password !== hardcodedUser.password) {
-      return res.render("account/login", {
-        title: "Login",
-        errors: null,
-        message: "Incorrect password."
-      });
-    }
-
-    const token = jwt.sign({
-      account_id: hardcodedUser.account_id,
-      email: hardcodedUser.email,
-      firstname: hardcodedUser.firstname
-    }, process.env.JWT_SECRET, { expiresIn: "1h" });
+    const token = jwt.sign(
+      {
+        account_id: hardcodedUser.account_id,
+        email: hardcodedUser.email,
+        firstname: hardcodedUser.firstname
+      },
+      process.env.JWT_SECRET,
+      { expiresIn: "1h" }
+    );
 
     res.cookie("jwt", token, { httpOnly: true });
     return res.redirect("/account");
@@ -66,38 +64,31 @@ const buildRegister = (req, res) => {
   });
 };
 
-// POST: Handle registration (mock)
+// POST: Handle registration (mocked)
 const handleRegister = async (req, res) => {
   const { email, password, firstname, lastname } = req.body;
+  hardcodedUser = {
+    email,
+    password,
+    firstname,
+    lastname,
+    account_id: 123,
+    avatar: null
+  };
 
-  try {
-    hardcodedUser = {
-      email,
-      password,
-      firstname,
-      lastname,
-      account_id: 123
-    };
-
-    res.render("account/login", {
-      title: "Login",
-      message: "Registration successful. Please login.",
-      errors: null
-    });
-  } catch (error) {
-    console.error("Registration error:", error);
-    res.status(500).render("account/register", {
-      title: "Register",
-      message: "Server error. Please try again."
-    });
-  }
+  res.render("account/login", {
+    title: "Login",
+    message: "Registration successful. Please login.",
+    errors: null
+  });
 };
 
-// GET: Account Management Page
+// GET: Account Management
 const buildAccountManagement = (req, res) => {
   res.render("account/management", {
     title: "Account Management",
-    account: hardcodedUser
+    account: hardcodedUser,
+    message: null
   });
 };
 
@@ -110,13 +101,23 @@ const buildUpdateAccount = (req, res) => {
   });
 };
 
-// POST: Handle Account Update
+// POST: Handle Account Update with Avatar Upload
 const handleUpdateAccount = (req, res) => {
   const { firstname, lastname, email } = req.body;
-
   hardcodedUser.firstname = firstname;
   hardcodedUser.lastname = lastname;
   hardcodedUser.email = email;
+
+  if (req.file) {
+    const filename = req.file.filename;
+
+    // Optional: delete old avatar
+    if (hardcodedUser.avatar && fs.existsSync(`public/images/${hardcodedUser.avatar}`)) {
+      fs.unlinkSync(`public/images/${hardcodedUser.avatar}`);
+    }
+
+    hardcodedUser.avatar = filename;
+  }
 
   res.render("account/management", {
     title: "Account Management",
@@ -125,7 +126,7 @@ const handleUpdateAccount = (req, res) => {
   });
 };
 
-// GET: Change Password Page
+// GET: Change Password
 const buildChangePassword = (req, res) => {
   res.render("account/change-password", {
     title: "Change Password",
@@ -133,7 +134,7 @@ const buildChangePassword = (req, res) => {
   });
 };
 
-// POST: Handle Password Change
+// POST: Change Password
 const handleChangePassword = async (req, res) => {
   const { currentPassword, newPassword } = req.body;
 
@@ -171,3 +172,4 @@ module.exports = {
   buildChangePassword,
   handleChangePassword
 };
+

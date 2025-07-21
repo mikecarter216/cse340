@@ -1,11 +1,15 @@
 const pool = require("../config/db");
 
 async function getAccountByEmail(email) {
-  const result = await pool.query(
-    "SELECT * FROM account WHERE email = $1",
-    [email]
-  );
-  return result.rows[0];
+  // Mock DB method
+  return {
+    email: "michaelakpan216@gmail.com",
+    password: "mike1",
+    firstname: "Michael",
+    lastname: "Akpan",
+    account_id: 123,
+    avatar: null
+  };
 }
 
 module.exports = {

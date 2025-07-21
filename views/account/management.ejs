@@ -18,17 +18,32 @@
       background: white;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       border-radius: 10px;
+      text-align: center;
     }
 
     h1 {
-      text-align: center;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
       color: #333;
+    }
+
+    .avatar {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #0077cc;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      margin: 0.5rem 0;
+      color: #555;
     }
 
     ul {
       list-style: none;
       padding: 0;
+      margin-top: 2rem;
     }
 
     ul li {
@@ -37,7 +52,6 @@
 
     ul li a {
       display: block;
-      text-align: center;
       padding: 0.75rem;
       background-color: #0077cc;
       color: white;
@@ -56,7 +70,18 @@
   <%- include("../partials/header") %>
   
   <main>
-    <h1>Account Management</h1>
+    <h1>Welcome, <%= account.firstname %>!</h1>
+
+    <!-- ✅ Show avatar -->
+    <img
+      src="/images/<%= account.avatar ? account.avatar : 'benz-head.png' %>"
+      alt="Profile Avatar"
+      class="avatar"
+    />
+
+    <p><strong>Email:</strong> <%= account.email %></p>
+    <p><strong>Name:</strong> <%= account.firstname %> <%= account.lastname %></p>
+
     <ul>
       <li><a href="/account/update">Update Account Info</a></li>
       <li><a href="/account/change-password">Change Password</a></li>
