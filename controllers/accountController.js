@@ -9,10 +9,9 @@ let hardcodedUser = {
   firstname: "Michael",
   lastname: "Akpan",
   account_id: 123,
-  avatar: null // Avatar image filename
+  avatar: null
 };
 
-// GET: Login page
 const buildLogin = (req, res) => {
   res.render("account/login", {
     title: "Login",
@@ -21,7 +20,7 @@ const buildLogin = (req, res) => {
   });
 };
 
-// POST: Handle login
+
 const handleLogin = async (req, res) => {
   const { email, password } = req.body;
 
@@ -56,7 +55,7 @@ const handleLogin = async (req, res) => {
   }
 };
 
-// GET: Register page
+
 const buildRegister = (req, res) => {
   res.render("account/register", {
     title: "Register",
@@ -64,7 +63,7 @@ const buildRegister = (req, res) => {
   });
 };
 
-// POST: Handle registration (mocked)
+
 const handleRegister = async (req, res) => {
   const { email, password, firstname, lastname } = req.body;
   hardcodedUser = {
@@ -83,7 +82,7 @@ const handleRegister = async (req, res) => {
   });
 };
 
-// GET: Account Management
+
 const buildAccountManagement = (req, res) => {
   res.render("account/management", {
     title: "Account Management",
@@ -92,7 +91,6 @@ const buildAccountManagement = (req, res) => {
   });
 };
 
-// GET: Update Account Page
 const buildUpdateAccount = (req, res) => {
   res.render("account/update-account", {
     title: "Update Account",
@@ -101,7 +99,7 @@ const buildUpdateAccount = (req, res) => {
   });
 };
 
-// POST: Handle Account Update with Avatar Upload
+
 const handleUpdateAccount = (req, res) => {
   const { firstname, lastname, email } = req.body;
   hardcodedUser.firstname = firstname;
@@ -111,7 +109,7 @@ const handleUpdateAccount = (req, res) => {
   if (req.file) {
     const filename = req.file.filename;
 
-    // Optional: delete old avatar
+  
     if (hardcodedUser.avatar && fs.existsSync(`public/images/${hardcodedUser.avatar}`)) {
       fs.unlinkSync(`public/images/${hardcodedUser.avatar}`);
     }
@@ -126,7 +124,6 @@ const handleUpdateAccount = (req, res) => {
   });
 };
 
-// GET: Change Password
 const buildChangePassword = (req, res) => {
   res.render("account/change-password", {
     title: "Change Password",
@@ -134,7 +131,6 @@ const buildChangePassword = (req, res) => {
   });
 };
 
-// POST: Change Password
 const handleChangePassword = async (req, res) => {
   const { currentPassword, newPassword } = req.body;
 
@@ -154,7 +150,6 @@ const handleChangePassword = async (req, res) => {
   });
 };
 
-// Logout
 const handleLogout = (req, res) => {
   res.clearCookie("jwt");
   res.redirect("/");

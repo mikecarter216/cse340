@@ -50,7 +50,6 @@ async function buildById(req, res, next) {
   }
 }
 
-// ✅ New function to build the Add Inventory form
 async function buildAddInventory(req, res, next) {
   try {
     const nav = await utilities.getNav()
@@ -71,5 +70,5 @@ module.exports = {
   buildInventory,
   buildByClassification,
   buildById,
-  buildAddInventory, // ✅ Export the new function
+  buildAddInventory,
 }

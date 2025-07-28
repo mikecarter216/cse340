@@ -1,7 +1,7 @@
 function handleErrors(err, req, res, next) {
-  console.error(err.stack); // Logs the error in the terminal
+  console.error(err.stack);
 
-  const nav = ""; // Optional: You can replace this with getNav() if you're using dynamic navigation
+  const nav = "";
 
   res.status(err.status || 500).render("errors/error", {
     title: "Server Error",

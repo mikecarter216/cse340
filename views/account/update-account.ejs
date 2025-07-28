@@ -16,7 +16,6 @@
       <p class="flash-message"><%= message %></p>
     <% } %>
 
-    <!-- ✅ ACCOUNT UPDATE FORM with enctype and avatar input -->
     <form action="/account/update" method="POST" enctype="multipart/form-data" class="update-form">
       <label for="firstname">First Name</label>
       <input
@@ -45,7 +44,6 @@
         value="<%= account.email %>"
       />
 
-      <!-- ✅ Profile Avatar Preview -->
       <% if (account.avatar) { %>
         <div>
           <p>Current Profile Image:</p>
@@ -53,7 +51,6 @@
         </div>
       <% } %>
 
-      <!-- ✅ Avatar Upload Field -->
       <label for="avatar">Upload New Profile Image</label>
       <input type="file" name="avatar" id="avatar" accept="image/*" />
 

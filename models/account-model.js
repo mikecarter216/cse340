@@ -1,7 +1,6 @@
 const pool = require("../config/db");
 
 async function getAccountByEmail(email) {
-  // Mock DB method
   return {
     email: "michaelakpan216@gmail.com",
     password: "mike1",

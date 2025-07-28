@@ -156,7 +156,7 @@ const inventory = [
     inv_image: "/images/benz1.png",
     classification: "custom"
   },
-  // Sport cars (2 total)
+
   {
     inv_id: 15,
     inv_make: "bmw",
@@ -190,7 +190,6 @@ async function getVehicleById(inv_id) {
 async function getVehiclesByClassification(classification) {
   let results = inventory.filter(v => v.classification === classification)
   
-  // Limit based on classification
   if (classification === "custom") return results.slice(0, 5)
   if (classification === "sport") return results.slice(0, 2)
 
